@@ -54,7 +54,7 @@ export default function Checkout (){
         <form className='bg-white px-5 mt-12 mb-2'>
         <div className="space-y-12">
       <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">addressal Information</h2>
+          <h2 className="text-2xl py-3 font-semibold leading-7 text-gray-900">Personal Information</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -324,13 +324,13 @@ export default function Checkout (){
     href="#"
     className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
   >
-    Checkout
+    Pay and Order
   </a>
 </div>
 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
   <p>
     or
-    <Link to={'/home'}>
+    <Link to={'/pay'}>
     <button
       type="button"
       className="font-medium text-indigo-600 hover:text-indigo-500"
