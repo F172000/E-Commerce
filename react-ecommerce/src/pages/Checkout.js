@@ -194,7 +194,7 @@ export default function Checkout (){
         </button>
       </div>
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">Address</h2>
+          <h2 className="text-base font-semibold leading-7 text-gray-900">Addresses</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
            Choose from existing Address
           </p>
