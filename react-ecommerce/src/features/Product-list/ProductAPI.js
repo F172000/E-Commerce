@@ -8,11 +8,20 @@ export function fetchAllProducts() {
   }
   );
 }
-export function fetchProductsByFilters(filter) {
+export function fetchProductsByFilters(filter,sort) {
   //filter={"category":"smartphone"}
+  //sort ={_sort:"price",order='desc'}
+  //TODO : on server we will support multi values
   let querystring='';
   for(let key in filter){
-querystring+=`${key}=${filter[key]}&`
+    const categoryValues=filter[key];
+    if(categoryValues.length>0){
+      const lastCategoryValue=categoryValues[categoryValues.length-1]
+      querystring+=`${key}=${lastCategoryValue}&`
+    }
+  }
+  for(let key in sort){
+    querystring+=`${key}=${sort[key]}&`
   }
   return new Promise(async(resolve) =>{
     //TODO: we will not hard code server URL here
