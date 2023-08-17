@@ -33,7 +33,7 @@ element:<CartPage/>
   path:'/checkout',
   element:<Checkout/>
 },{
-  path:'/productdetail',
+  path:'/productdetail/:id',
   element:<ProductDetailPage/>
 }])
 function App() {
