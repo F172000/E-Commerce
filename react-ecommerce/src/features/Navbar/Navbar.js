@@ -16,9 +16,9 @@ const navigation = [
   { name: 'Team', href: '#', current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your Profile', link: '/home' },
+  { name: 'Settings', link: '/home' },
+  { name: 'Sign out', link: '/' },
 ]
 
 function classNames(...classes) {
@@ -38,7 +38,7 @@ export default function Navbar({children}){
                     <div className="flex-shrink-0">
                       <Link to={'/home'}>
                       <img
-                        className="h-12 w-12"
+                        className="h-16 w-16"
                         src={logo}
                         alt="Your Company"
                       />
@@ -100,15 +100,15 @@ export default function Navbar({children}){
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <a
-                                    href={item.href}
+                                  <Link
+                                  to={item.Link}
                                     className={classNames(
                                       active ? 'bg-gray-100' : '',
                                       'block px-4 py-2 text-sm text-gray-700'
                                     )}
                                   >
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 )}
                               </Menu.Item>
                             ))}
