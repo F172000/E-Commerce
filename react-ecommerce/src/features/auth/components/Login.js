@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link,useNavigate,Navigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import logo from '../../images/logo.png';
+import logo3 from '../../images/logo3.png';
 import { checkUserAsync, selectError, selectLoggedInUser } from '../authSlice';
 // import {
 //   increment,
@@ -25,11 +25,12 @@ console.log(errors);
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
-            className="mx-auto h-16 w-16"
-            src={logo}
+            className="mx-auto "
+            style={{width:'10em',height:'10em'}}
+            src={logo3}
             alt="Your Company"
           />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-pink-950">
             Log in to your account
           </h2>
         </div>
@@ -40,7 +41,7 @@ console.log(errors);
          console.log(data)
           })}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-pink-950">
                 Email address
               </label>
               <div className="mt-2">
@@ -56,11 +57,11 @@ console.log(errors);
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-pink-950">
                   Password
                 </label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  <a href="#" className="font-semibold text-pink-950 hover:text-pink-950">
                     Forgot password?
                   </a>
                 </div>
@@ -81,7 +82,7 @@ console.log(errors);
               <button
               // onClick={()=>navigate('/home')}
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-pink-950 px-3 py-1.5 text-sm font-semibold leading-6 text-orange-100 shadow-sm hover:bg-pink-900 hover:text-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-950"
               >
                 Login
               </button>
@@ -90,7 +91,7 @@ console.log(errors);
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
-            <Link to={'/signup'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <Link to={'/signup'} className="font-semibold leading-6 text-pink-950 hover:text-pink-950">
               Create an Account
             </Link>
           </p>

@@ -44,13 +44,13 @@ const navigate=useNavigate();
   return (
     <div className="mx-auto mt-4 bg-white max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-<div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-<h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">Cart</h1>
+<div className="border-t border-rose-200 px-4 py-6 sm:px-6">
+<h1 className="text-4xl my-5 font-bold tracking-tight text-pink-950">Cart</h1>
   <div className="flow-root">
-    <ul role="list" className="-my-6 divide-y divide-gray-200">
+    <ul role="list" className="-my-6 divide-y divide-rose-100">
       {products.map((product) => (
         <li key={product.id} className="flex py-6">
-          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-rose-100">
             <img
               src={product.imageSrc}
               alt={product.imageAlt}
@@ -60,7 +60,7 @@ const navigate=useNavigate();
 
           <div className="ml-4 flex flex-1 flex-col">
             <div>
-              <div className="flex justify-between text-base font-medium text-gray-900">
+              <div className="flex justify-between text-base font-medium text-pink-950">
                 <h3>
                   <a href={product.href}>{product.name}</a>
                 </h3>
@@ -70,7 +70,7 @@ const navigate=useNavigate();
             </div>
             <div className="flex flex-1 items-end justify-between text-sm">
               <div className="text-gray-500">
-              <label htmlFor="email" className="inline mr-2 text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="email" className="inline mr-2 text-sm font-medium leading-6 text-pink-950">
                 Qty
               </label>
               <select>
@@ -83,7 +83,7 @@ const navigate=useNavigate();
               <div className="flex">
                 <button
                   type="button"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-pink-950 hover:text-pink-950"
                 >
                   Remove
                 </button>
@@ -98,15 +98,15 @@ const navigate=useNavigate();
 
 
 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-<div className="flex justify-between text-base font-medium text-gray-900">
+<div className="flex justify-between text-base font-medium text-pink-950">
   <p>Subtotal</p>
   <p>$262.00</p>
 </div>
-<p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+<p className="mt-0.5 text-sm text-pink-950">Shipping and taxes calculated at checkout.</p>
 <div className="mt-6">
   <Link
    to={'/checkout'}
-    className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+    className="flex items-center justify-center rounded-md border border-transparent bg-pink-950 px-6 py-3 text-base font-medium text-orange-100 shadow-sm hover:bg-pink-950"
   >
     Checkout
   </Link>
@@ -117,7 +117,7 @@ const navigate=useNavigate();
     <Link to={'/home'}>
     <button
       type="button"
-      className="font-medium text-indigo-600 hover:text-indigo-500"
+      className="font-medium text-pink-950 hover:text-pink-950"
       onClick={() => setOpen(false)}
     >
       Continue Shopping

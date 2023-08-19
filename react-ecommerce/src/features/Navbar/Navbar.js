@@ -12,13 +12,13 @@ const user = {
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'Aura', href: '#', current: true },
+  { name: 'Kharidari', href: '#', current: true },
   { name: 'Team', href: '#', current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', link: '/home' },
-  { name: 'Settings', link: '/home' },
-  { name: 'Sign out', link: '/' },
+  { name: 'Your Profile', Link: '/home' },
+  { name: 'Settings', Link: '/home' },
+  { name: 'Sign out', Link: '/' },
 ]
 
 function classNames(...classes) {
@@ -29,7 +29,7 @@ export default function Navbar({children}){
   return (
     <div>
        <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-pink-950">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -38,7 +38,8 @@ export default function Navbar({children}){
                     <div className="flex-shrink-0">
                       <Link to={'/home'}>
                       <img
-                        className="h-16 w-16"
+                        // className="h-18 w-18"
+                        style={{width:'9.6em',height:'9.6em'}}
                         src={logo}
                         alt="Your Company"
                       />
@@ -52,8 +53,8 @@ export default function Navbar({children}){
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? 'bg-gray-900 text-white'
-                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                ? 'bg-pink-950 text-orange-100'
+                                : 'text-orange-100 hover:bg-orange-100 hover:text-pink-950',
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
@@ -69,12 +70,12 @@ export default function Navbar({children}){
                       <button
                       onClick={()=>navigate('/cart')}
                         type="button"
-                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="relative rounded-full bg-pink-950 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100 focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span className="absolute -inset-1.5" />
-                        <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                        <ShoppingCartIcon className="h-6 w-6 text-orange-100 bg-pink-950" aria-hidden="true" />
                       </button>
-                      <span className="inline-flex items-center rounded-md mb-7  bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                      <span className="inline-flex items-center rounded-md mb-7  bg-orange-100 px-2 py-1 text-xs font-medium text-pink-950 ring-1 ring-inset ring-red-600/10">
         3
       </span>
 
@@ -96,15 +97,16 @@ export default function Navbar({children}){
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white
+                           py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
                                   <Link
                                   to={item.Link}
                                     className={classNames(
-                                      active ? 'bg-gray-100' : '',
-                                      'block px-4 py-2 text-sm text-gray-700'
+                                      active ? 'bg-orange-100' : '',
+                                      'block px-4 py-2 text-sm text-pink-950'
                                     )}
                                   >
                                     {item.name}
@@ -119,7 +121,7 @@ export default function Navbar({children}){
                   </div>
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-orange-100 p-2 text-pink-950 hover:bg-orange-100 hover:text-pink-950 focus:outline-none focus:ring-2 focus:ring-orange-100 focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-0.5" />
                       <span className="sr-only">Open main menu</span>
                       {open ? (
@@ -140,7 +142,7 @@ export default function Navbar({children}){
                       as="a"
                       href={item.href}
                       className={classNames(
-                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        item.current ? 'bg-orange-100 text-pink-950' : 'text-orange-100 hover:bg-pink-950 hover:text-white',
                         'block rounded-md px-3 py-2 text-base font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -149,24 +151,24 @@ export default function Navbar({children}){
                     </Disclosure.Button>
                   ))}
                 </div>
-                <div className="border-t border-gray-700 pb-3 pt-4">
+                <div className="border-t border-orange-100 pb-3 pt-4">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
                       <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">{user.name}</div>
-                      <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
+                      <div className="text-base font-medium leading-none text-orange-100">{user.name}</div>
+                      <div className="text-sm font-medium leading-none text-orange-100">{user.email}</div>
                     </div>
                     <button
                     onClick={()=>navigate('/cart')}
                       type="button"
-                      className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      className="relative ml-auto flex-shrink-0 rounded-full bg-pink-950 p-1 text-orange-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-100 focus:ring-offset-2 focus:ring-offset-gray-800"
                     >
                       <span className="absolute -inset-1.5" />
-                      <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                      <ShoppingCartIcon className="h-6 w-6  " aria-hidden="true" />
                     </button>
-                    <span className="inline-flex items-center rounded-md bg-red-50 mb-7 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                    <span className="inline-flex items-center rounded-md bg-orange-100 mb-7 px-2 py-1 text-xs font-medium text-pink-950 ring-1 ring-inset ring-red-600/10">
         7
       </span>
                   </div>
@@ -176,7 +178,7 @@ export default function Navbar({children}){
                         key={item.name}
                         as="a"
                         href={item.href}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                        className="block rounded-md px-3 py-2 text-base font-medium text-orange-100 hover:bg-orange-100 hover:text-pink-950"
                       >
                         {item.name}
                       </Disclosure.Button>
@@ -190,7 +192,7 @@ export default function Navbar({children}){
 
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">Aura</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-pink-950">Kharidari</h1>
           </div>
         </header>
         <main>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo3.png';
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser,createUserAsync } from '../authSlice';
 import { Navigate } from 'react-router-dom';
@@ -24,22 +24,23 @@ console.log(errors);
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
-            className="mx-auto h-16 w-16"
+            className="mx-auto"
+            style={{width:'10em',height:'10em'}}
             src={logo}
             alt="Your Company"
           />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-2 text-center text-2xl font-bold leading-9 tracking-tight text-pink-950">
            Create a New Account
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-7 sm:mx-auto sm:w-full sm:max-w-sm">
           <form noValidate className="space-y-6" onSubmit={handleSubmit((data)=>{
             dispatch(createUserAsync({email:data.email,password:data.password}))
          console.log(data);
           })}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-pink-950">
                 Email address
               </label>
               <div className="mt-2">
@@ -55,7 +56,7 @@ console.log(errors);
 
             <div>
               <div className="flex items-center   justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-pink-950">
                   Password
                 </label>
               </div>
@@ -73,7 +74,7 @@ console.log(errors);
 </div>
 <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-pink-950">
                   Comfirm Password
                 </label>
               </div>
@@ -93,16 +94,16 @@ console.log(errors);
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-pink-950 px-3 py-1.5 text-sm font-semibold leading-6 text-orange-100 shadow-sm hover:bg-pink-900 hover:text-orange-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-950"
               >
                 Sign up
               </button>
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
+          <p className="mt-7 text-center text-sm text-gray-500">
             Already a member?{' '}
-            <Link to={'/'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <Link to={'/'} className="font-semibold leading-6 text-pink-950 hover:text-pink-950">
               Login
             </Link>
           </p>

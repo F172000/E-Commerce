@@ -124,18 +124,18 @@ dispatch(fetchAllProductsAsync());
           <MobileFilter handlefilters={handlefilters} mobileFiltersOpen={mobileFiltersOpen} setMobileFiltersOpen={setMobileFiltersOpen} filters={filters}/>
 
             <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              <div className="flex items-baseline justify-between border-b border-rose-100 pb-6 pt-24">
+                <h1 className="lg:text-4xl font-bold tracking-tight text-pink-950">
                   All Products
                 </h1>
 
                 <div className="flex items-center">
                   <Menu as="div" className="relative inline-block text-left">
                     <div>
-                      <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                      <Menu.Button className="group inline-flex justify-center text-sm font-medium text-pink-950 hover:text-pink-950">
                         Sort
                         <ChevronDownIcon
-                          className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                          className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-pink-950 group-hover:text-pink-950"
                           aria-hidden="true"
                         />
                       </Menu.Button>
@@ -160,9 +160,9 @@ dispatch(fetchAllProductsAsync());
                                   onClick={e=>handleSort(e,option)}
                                   className={classNames(
                                     option.current
-                                      ? "font-medium text-gray-900"
-                                      : "text-gray-500",
-                                    active ? "bg-gray-100" : "",
+                                      ? "font-medium text-pink-950"
+                                      : "text-pink-950",
+                                    active ? "bg-orange-100" : "",
                                     "block px-4 py-2 text-sm"
                                   )}
                                 >
@@ -178,14 +178,14 @@ dispatch(fetchAllProductsAsync());
 
                   <button
                     type="button"
-                    className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
+                    className="-m-2 ml-5 p-2 text-pink-950 hover:text-pink-950 sm:ml-7"
                   >
                     <span className="sr-only">View grid</span>
                     <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
                   </button>
                   <button
                     type="button"
-                    className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                    className="-m-2 ml-4 p-2 text-pink-950 hover:text-pink-950 sm:ml-6 lg:hidden"
                     onClick={() => setMobileFiltersOpen(true)}
                   >
                     <span className="sr-only">Filters</span>
@@ -258,32 +258,32 @@ function MobileFilter({handlefilters,mobileFiltersOpen,setMobileFiltersOpen,filt
                   >
                     <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                       <div className="flex items-center justify-between px-4">
-                        <h2 className="text-lg font-medium text-gray-900">
+                        <h2 className="text-lg font-medium text-pink-950">
                           Filters
                         </h2>
                         <button
                           type="button"
-                          className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                          className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-orange-100 p-2 text-pink-450"
                           onClick={() => setMobileFiltersOpen(false)}
                         >
                           <span className="sr-only">Close menu</span>
-                          <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                          <XMarkIcon className="h-6 w-6 text-pink-950" aria-hidden="true" />
                         </button>
                       </div>
 
                       {/* Filters */}
-                      <form className="mt-4 border-t border-gray-200">
+                      <form className="mt-4 border-t border-rose-100">
                         {filters.map((section) => (
                           <Disclosure
                             as="div"
                             key={section.id}
-                            className="border-t border-gray-200 px-4 py-6"
+                            className="border-t border-rose-100 px-4 py-6"
                           >
                             {({ open }) => (
                               <>
                                 <h3 className="-mx-2 -my-3 flow-root">
-                                  <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                                    <span className="font-medium text-gray-900">
+                                  <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-pink-950 hover:text-pink-950">
+                                    <span className="font-medium text-pink-950">
                                       {section.name}
                                     </span>
                                     <span className="ml-6 flex items-center">
@@ -316,11 +316,11 @@ function MobileFilter({handlefilters,mobileFiltersOpen,setMobileFiltersOpen,filt
                                             type="checkbox"
                                             defaultChecked={option.checked}
                                             onChange={e=>handlefilters(e,section,option)}
-                                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                            className="h-4 w-4 rounded border-gray-300 text-pink-950 focus:ring-pink-950"
                                           />
                                           <label
                                             htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                                            className="ml-3 min-w-0 flex-1 text-gray-500"
+                                            className="ml-3 min-w-0 flex-1 text-pink-950"
                                           >
                                             {option.label}
                                           </label>
@@ -350,13 +350,13 @@ function DesktopFilter({handlefilters,filters}) {
                       <Disclosure
                         as="div"
                         key={section.id}
-                        className="border-b border-gray-200 py-6"
+                        className="border-b border-rose-100 py-6"
                       >
                         {({ open }) => (
                           <>
                             <h3 className="-my-3 flow-root">
-                              <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                                <span className="font-medium text-gray-900">
+                              <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-pink-950 hover:text-pink-950">
+                                <span className="font-medium text-pink-950">
                                   {section.name}
                                 </span>
                                 <span className="ml-6 flex items-center">
@@ -388,11 +388,11 @@ function DesktopFilter({handlefilters,filters}) {
                                       type="checkbox"
                                       defaultChecked={option.checked}
                                       onChange={e=>handlefilters(e,section,option)}
-                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      className="h-4 w-4 rounded border-pink-950 text-pink-950 focus:ring-pink-950"
                                     />
                                     <label
                                       htmlFor={`filter-${section.id}-${optionIdx}`}
-                                      className="ml-3 text-sm text-gray-600"
+                                      className="ml-3 text-sm text-pink-950"
                                     >
                                       {option.label}
                                     </label>
@@ -413,24 +413,24 @@ function Pagination({page,setpage,handlePage,totalITems}) {
   const totalPages=Math.ceil(totalITems/ITEMS_PER_PAGE);
   return (
     <div>
-       <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+       <div className="flex items-center justify-between border-t border-rose-100 bg-white px-4 py-3 sm:px-6">
                 <div className="flex flex-1 justify-between sm:hidden">
                   <div
                      onClick={(e)=>handlePage(page>1?page-1:page)}
-                    className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    className="relative inline-flex items-center rounded-md border border-rose-200 bg-orange-100 px-4 py-2 text-sm font-medium text-pink-950 hover:bg-orange-100"
                   >
                     Previous
                   </div>
                   <div
                      onClick={(e)=>handlePage(page<totalPages?page+1:page)}
-                    className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    className="relative ml-3 inline-flex items-center rounded-md border border-rose-200 bg-orange-100 px-4 py-2 text-sm font-medium text-pink-950 hover:bg-orange-100"
                   >
                     Next
                   </div>
                 </div>
                 <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-pink-950">
                       Showing <span className="font-medium">{(page-1)*ITEMS_PER_PAGE+1}</span> to{" "}
                       <span className="font-medium">{page*ITEMS_PER_PAGE}</span> of{" "}
                       <span className="font-medium">{totalITems}</span> results
@@ -443,7 +443,7 @@ function Pagination({page,setpage,handlePage,totalITems}) {
                     >
                       <div
                         onClick={(e)=>handlePage(page>1?page-1:page)}
-                        className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                        className="relative inline-flex items-center rounded-l-md px-2 py-2 bg-orange-100 text-pink-950 ring-1 ring-inset ring-rose-200 hover:bg-orange-100 focus:z-20 focus:outline-offset-0"
                       >
                         <span className="sr-only">Previous</span>
                         <ChevronLeftIcon
@@ -458,9 +458,9 @@ function Pagination({page,setpage,handlePage,totalITems}) {
                        aria-current="page"
                        className={`relative cursor-pointer z-10 inline-flex items-center ${
                         index + 1 === page
-                          ? 'bg-indigo-600 text-white'
-                          : 'text-gray-400'
-                      } px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                          ? 'bg-pink-950 text-orange-100'
+                          : 'text-pink-950'
+                      } px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-950`}
                      >
                        {index+1}
                      </div>
@@ -470,7 +470,7 @@ function Pagination({page,setpage,handlePage,totalITems}) {
 
                       <div
                        onClick={(e)=>handlePage(page<totalPages?page+1:page)}
-                        className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                        className="relative inline-flex items-center rounded-r-md px-2 py-2 bg-orange-100 text-pink-950 ring-1 ring-inset ring-rose-200 hover:bg-orange-100 focus:z-20 focus:outline-offset-0"
                       >
                         <span className="sr-only">Next</span>
                         <ChevronRightIcon
@@ -494,8 +494,8 @@ function ProductGrid({products}) {
                         {products.length > 0 ? (
   products.map((product) => (
                             <Link to={`/productdetail/${product.id}`} key={product.id}>
-                              <div  className="group relative p-2 border-solid border-2 border-gray-200">
-                                <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                              <div  className="group relative p-2 border-solid border-2 border-rose-100 bg-orange-100">
+                                <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-pink-950 lg:aspect-none group-hover:opacity-75 lg:h-60">
                                   <img
                                     src={product.thumbnail}
                                     alt={product.title}
@@ -504,7 +504,7 @@ function ProductGrid({products}) {
                                 </div>
                                 <div className="mt-4 flex justify-between">
                                   <div>
-                                    <h3 className="text-sm text-gray-700">
+                                    <h3 className="text-sm text-pink-950">
                                       <div href={product.thumbnail}>
                                         <span
                                           aria-hidden="true"
@@ -513,16 +513,16 @@ function ProductGrid({products}) {
                                         {product.title}
                                       </div>
                                     </h3>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                      <StarIcon className="inline w-5 h-5"></StarIcon>
+                                    <p className="mt-1 text-sm text-pink-950">
+                                      <StarIcon className="inline w-5 h-5 text-yellow-500"></StarIcon>
                                       <span className="align-bottom"> {product.rating}</span>
                                     </p>
                                   </div>
                                   <div>
-                                  <p className="text-sm block font-medium text-gray-900">
+                                  <p className="text-sm block font-medium text-pink-950">
                                    $ {Math.round(product.price*(1-product.discountPercentage/100))}
                                   </p>
-                                  <p className="text-sm block line-through font-medium text-gray-400">
+                                  <p className="text-sm block line-through font-medium text-gray-600">
                                     $ {product.price}
                                   </p>
                                   </div>
@@ -530,7 +530,7 @@ function ProductGrid({products}) {
                               </div> 
                             </Link>
                           ))): (
-                            <p>no data</p>
+                            <p className="font-medium text-pink-950">Data is not loaded</p>
                             // Loading or no products available message
                           )}
                         </div>
