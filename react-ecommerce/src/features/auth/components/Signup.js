@@ -48,7 +48,7 @@ console.log(errors);
                   id="email"
                  {...register("email",{required:"email is required",pattern: {value:/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,message:"email is not valid"} })}
                   type="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pink-950 sm:text-sm sm:leading-6"
                 />
                  {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
               </div>
@@ -67,7 +67,7 @@ console.log(errors);
                 -must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n
                 -Can contain special characters`}})}
                   type="password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pink-950 sm:text-sm sm:leading-6"
                 />
                 {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
               </div>
@@ -83,7 +83,7 @@ console.log(errors);
                   id="confirmPassword"
                  {...register("confirmPassword",{required:"confirm password is required", validate: (value, formValues) => value === formValues.password || 'password not matching'})}
                   type="password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-pink-950 sm:text-sm sm:leading-6"
                 />
                  {errors.confirmPassword && <p className='text-red-500'>{errors.confirmPassword.message}</p>}
               </div>

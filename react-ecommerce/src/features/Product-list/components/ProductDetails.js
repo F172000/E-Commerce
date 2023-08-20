@@ -4,6 +4,8 @@ import { RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductByIdAsync,selectProductById } from '../productSlice';
 import { useParams } from 'react-router-dom';
+import { addtoCartAsync } from '../../cart/cartSlice';
+import { selectLoggedInUser } from '../../auth/authSlice';
 
 const colors= [
   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
@@ -34,9 +36,14 @@ function classNames(...classes) {
 export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
+  const user=useSelector(selectLoggedInUser);
   const dispatch=useDispatch();
   const params=useParams();
   const product=useSelector(selectProductById);
+  const handlecart=(e)=>{
+    e.preventDefault();
+dispatch(addtoCartAsync({...product,quantity:1,user:user.id}));
+  }
   useEffect(()=>{
     dispatch(fetchProductByIdAsync(params.id));
   },[dispatch,params.id])
@@ -239,8 +246,9 @@ export default function ProductDetail() {
               </div>
 
               <button
+              onClick={handlecart}
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-pink-950 px-8 py-3 text-base font-medium text-orange-100 hover:bg-pink-950 focus:outline-none focus:ring-2 focus:ring-pink-950 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-pink-950 px-8 py-3 text-base font-medium text-orange-100 hover:bg-pink-900 focus:outline-none focus:ring-2 focus:ring-pink-950 focus:ring-offset-2"
               >
                 Add to Cart
               </button>

@@ -112,7 +112,7 @@ export default function Checkout (){
                   id="country"
                   name="country"
                   autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:max-w-xs sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5  text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>United States</option>
                   <option>Canada</option>
@@ -320,7 +320,7 @@ export default function Checkout (){
 <div className="mt-6">
   <a
     href="#"
-    className="flex items-center justify-center rounded-md border border-transparent bg-pink-950 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+    className="flex items-center justify-center rounded-md border border-transparent bg-pink-950 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-900"
   >
     Pay and Order
   </a>

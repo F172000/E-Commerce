@@ -1,21 +1,37 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './counterAPI';
+import { fetchCount } from './cartAPI';
+import { addToCart,fetchitemsbyuserId,updateCart } from './cartAPI';
 
 const initialState = {
-  value: 0,
-  status: 'idle',
+  status: "idle",
+  items: [],
 };
-export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
-  async (amount) => {
-    const response = await fetchCount(amount);
+export const addtoCartAsync = createAsyncThunk(
+  'cart/addToCart',
+  async (item) => {
+    const response = await addToCart(item);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
-
+export const fetchallItemsAsync = createAsyncThunk(
+  'cart/fetchitemsbyuserId',
+  async (userId) => {
+    const response = await fetchitemsbyuserId(userId);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+export const updateItemsAsync = createAsyncThunk(
+  'cart/updateCart',
+  async (update) => {
+    const response = await updateCart(update);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: 'cart',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -25,17 +41,33 @@ export const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(addtoCartAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(addtoCartAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.value += action.payload;
+        state.items.push(action.payload);
+      })
+      .addCase(fetchallItemsAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchallItemsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.items=action.payload;
+      })
+      .addCase(updateItemsAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateItemsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        const index=state.items.findIndex(item=>item.id===action.payload.id);
+        state.items[index]=action.payload;
       });
   },
 });
 
 export const { increment } = counterSlice.actions;
-export const selectCount = (state) => state.counter.value;
+export const selectItems = (state) => state.cart.items;
+export const selectAllItems=(state)=>state.cart.items;
 
 export default counterSlice.reducer;

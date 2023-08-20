@@ -15,7 +15,6 @@ export function checkUser(loginInfo) {
   const email=loginInfo.email;
   const password=loginInfo.password; 
   return new Promise(async(resolve,reject) =>{
-    try {
       const response = await fetch('http://localhost:8080/users?email='+email);
       
       const data = await response.json();
@@ -30,12 +29,6 @@ export function checkUser(loginInfo) {
       }else{
 reject({message:'user not found'})
       }
-      //TODO: on server it will only return some info of user (not password)
-    } catch (error) {
-      // You might want to add error handling here
-      console.error('Error creating user:', error);
-      resolve(null); // Resolve with an appropriate value if an error occurs
-    }
   }
   );
 }
