@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link,useNavigate } from 'react-router-dom';
-import { selectItems, updateItemsAsync } from './cartSlice';
+import { deleteItemFromCartAsync, selectItems, updateItemsAsync } from './cartSlice';
 // import {
 //   increment,
 //   incrementAsync,
@@ -22,6 +22,9 @@ const totalAmount=items.reduce((amount,item)=>item.price*item.quantity+amount,0)
 const totalitems=items.reduce((total,item)=>item.quantity+total,0);
 const handleQuantity=(e,item)=>{
 dispatch(updateItemsAsync({...item,quantity:+ e.target.value}));
+};
+const handleRemove=(e,id)=>{
+  dispatch(deleteItemFromCartAsync(id));
 };
   return (
     <div className="mx-auto mt-4 bg-white max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -66,6 +69,7 @@ dispatch(updateItemsAsync({...item,quantity:+ e.target.value}));
 
               <div className="flex">
                 <button
+                onClick={(e)=>handleRemove(e,item.id)}
                   type="button"
                   className="font-medium text-pink-950 hover:text-pink-950"
                 >

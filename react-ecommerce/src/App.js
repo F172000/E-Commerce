@@ -45,10 +45,10 @@ function App() {
   const user=useSelector(selectLoggedInUser);
   console.log(user);
   useEffect(()=>{
-    if(user){
+    if(user && user.id){
       dispatch(fetchallItemsAsync(user.id));
     }
-  },[dispatch,user.id])
+  },[dispatch,user])
   return (
     <div className="App">
      <RouterProvider router={router}/>
