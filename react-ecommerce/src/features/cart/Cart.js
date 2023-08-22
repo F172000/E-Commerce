@@ -25,7 +25,7 @@ dispatch(updateItemsAsync({...item,quantity:+ e.target.value}));
 };
 const handleRemove=(e,id)=>{
   dispatch(deleteItemFromCartAsync(id));
-};
+}
   return (
     <div className="mx-auto mt-4 bg-white max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
