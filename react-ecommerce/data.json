@@ -2338,70 +2338,88 @@
     {
       "email": "fazilabano17@gmail.com",
       "password": "Fazila@123",
+      "addresses": [
+        {
+          "name": "Fazila Bano",
+          "email": "fazilabano17@gmail.com",
+          "Phone": "03159379922",
+          "street-address": "Bhara Kahu street#152 House#60",
+          "city": "Islamabad",
+          "state": "Pakistan",
+          "pinCode": "44000"
+        },
+        {
+          "name": "Fazila Bano",
+          "email": "malika@gmail.com",
+          "Phone": "03159379922",
+          "Address": "",
+          "city": "Islamabad",
+          "state": "Pakistan",
+          "pinCode": "44000",
+          "street": "street#50, house#13, Bharakahu Islamabad"
+        },
+        {
+          "name": "Fazila Bano",
+          "email": "fazilabano17@gmail.com",
+          "Phone": "03159379922",
+          "street": "street#50, house#13, Bharakahu Islamabad",
+          "city": "Islamabad",
+          "state": "Pakistan",
+          "pinCode": "44000"
+        }
+      ],
       "id": 1
     },
     {
       "email": "saima17@gmail.com",
       "password": "Saima@123",
+      "addresses": [],
       "id": 3
     },
     {
       "email": "zakir@gmail.com",
       "password": "Zakir@123",
+      "addresses": [],
       "id": 6
     },
     {
       "email": "uzma@gmail.com",
       "password": "Uzma@123",
+      "addresses": [],
       "id": 7
     },
     {
       "email": "uzma@gmail.com",
       "password": "Uzma@123",
+      "addresses": [],
       "id": 8
     },
     {
       "email": "Tahira@gmail.com",
       "password": "Tahira@123",
+      "addresses": [],
       "id": 9
     },
     {
       "email": "Yasir@gmail.com",
       "password": "Yasir@123",
+      "addresses": [],
       "id": 10
     },
     {
       "email": "malika@gmail.com",
       "password": "Malika@123",
+      "addresses": [],
       "id": 11
     },
     {
       "email": "rahim@gmail.com",
       "password": "Rahim@123",
+      "addresses": [],
       "id": 12
     }
   ],
   "cart": [
-    {
-      "id": 14,
-      "title": "Non-Alcoholic Concentrated Perfume Oil",
-      "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
-      "price": 120,
-      "discountPercentage": 15.6,
-      "rating": 4.21,
-      "stock": 114,
-      "brand": "Al Munakh",
-      "category": "fragrances",
-      "thumbnail": "https://i.dummyjson.com/data/products/14/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/14/1.jpg",
-        "https://i.dummyjson.com/data/products/14/2.jpg",
-        "https://i.dummyjson.com/data/products/14/3.jpg",
-        "https://i.dummyjson.com/data/products/14/thumbnail.jpg"
-      ],
-      "quantity": 2,
-      "user": 1
-    },
     {
       "id": 5,
       "title": "Huawei P30",
@@ -2418,29 +2436,82 @@
         "https://i.dummyjson.com/data/products/5/2.jpg",
         "https://i.dummyjson.com/data/products/5/3.jpg"
       ],
-      "quantity": 2,
+      "quantity": 1,
       "user": 1
-    },
+    }
+  ],
+  "orders": [
     {
-      "id": 16,
-      "title": "Hyaluronic Acid Serum",
-      "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
-      "price": 19,
-      "discountPercentage": 13.31,
-      "rating": 4.83,
-      "stock": 110,
-      "brand": "L'Oreal Paris",
-      "category": "skincare",
-      "thumbnail": "https://i.dummyjson.com/data/products/16/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/16/1.png",
-        "https://i.dummyjson.com/data/products/16/2.webp",
-        "https://i.dummyjson.com/data/products/16/3.jpg",
-        "https://i.dummyjson.com/data/products/16/4.jpg",
-        "https://i.dummyjson.com/data/products/16/thumbnail.jpg"
+      "items": [
+        {
+          "id": 5,
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "quantity": 1,
+          "user": 1
+        }
       ],
-      "quantity": 2,
-      "user": 1
+      "totalAmount": 499,
+      "totalitems": 1,
+      "user": {
+        "email": "fazilabano17@gmail.com",
+        "password": "Fazila@123",
+        "addresses": [
+          {
+            "name": "Fazila Bano",
+            "email": "fazilabano17@gmail.com",
+            "Phone": "03159379922",
+            "street-address": "Bhara Kahu street#152 House#60",
+            "city": "Islamabad",
+            "state": "Pakistan",
+            "pinCode": "44000"
+          },
+          {
+            "name": "Fazila Bano",
+            "email": "malika@gmail.com",
+            "Phone": "03159379922",
+            "Address": "",
+            "city": "Islamabad",
+            "state": "Pakistan",
+            "pinCode": "44000",
+            "street": "street#50, house#13, Bharakahu Islamabad"
+          },
+          {
+            "name": "Fazila Bano",
+            "email": "fazilabano17@gmail.com",
+            "Phone": "03159379922",
+            "street": "street#50, house#13, Bharakahu Islamabad",
+            "city": "Islamabad",
+            "state": "Pakistan",
+            "pinCode": "44000"
+          }
+        ],
+        "id": 1
+      },
+      "Payment": "cash",
+      "selectaddress": {
+        "name": "Fazila Bano",
+        "email": "malika@gmail.com",
+        "Phone": "03159379922",
+        "Address": "",
+        "city": "Islamabad",
+        "state": "Pakistan",
+        "pinCode": "44000",
+        "street": "street#50, house#13, Bharakahu Islamabad"
+      },
+      "id": 1
     }
   ]
 }

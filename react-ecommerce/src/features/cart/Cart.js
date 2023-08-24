@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link,useNavigate ,Navigate} from 'react-router-dom';
 import { deleteItemFromCartAsync, selectItems, updateItemsAsync } from './cartSlice';
 // import {
 //   increment,
@@ -27,6 +27,8 @@ const handleRemove=(e,id)=>{
   dispatch(deleteItemFromCartAsync(id));
 }
   return (
+    <div>
+    {!items.length>0 && <Navigate to={'/home'} replace={true}></Navigate>}
     <div className="mx-auto mt-4 bg-white max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
 <div className="border-t border-rose-200 px-4 py-6 sm:px-6">
@@ -119,6 +121,7 @@ const handleRemove=(e,id)=>{
   </p>
 </div>
 </div>
+      </div>
       </div>
     
   );

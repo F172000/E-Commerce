@@ -2,80 +2,72 @@ import React, { useState } from 'react';
 import { Fragment} from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link,useNavigate,Navigate } from 'react-router-dom';
 import { deleteItemFromCartAsync, selectItems, updateItemsAsync } from '../features/cart/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
-const addresses=[
-    {
-        name:'John wick',
-        street:'11th Main',
-        city:'Islamabad',
-        pincode:44000,
-        state:'Islamabad',
-        phone:12398734929
-    },
-    {
-        name:'John wick',
-        street:'15th Main',
-        city:'Islamabad',
-        pincode:54000,
-        state:'Islamabad',
-        phone:12398734929
-    }
-]
+import { useForm } from "react-hook-form";
+import { selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
+import { createOrderAsync } from '../features/Orders/orderSlice';
 export default function Checkout (){
   const dispatch = useDispatch();
     const [open, setOpen] = useState(true);
+    const [selectaddress,setselectaddress]=useState(null);
+    const [Payment,setPayment]=useState(null);
     const items=useSelector(selectItems);
 const totalAmount=items.reduce((amount,item)=>item.price*item.quantity+amount,0);
 const totalitems=items.reduce((total,item)=>item.quantity+total,0);
+const { register,reset, handleSubmit, watch, formState: { errors } } = useForm();
+const user=useSelector(selectLoggedInUser);
 const handleQuantity=(e,item)=>{
 dispatch(updateItemsAsync({...item,quantity:+ e.target.value}));
 };
 const handleRemove=(e,id)=>{
   dispatch(deleteItemFromCartAsync(id));
 }
+const handleAddress=(e)=>{
+  console.log(e.target.value);
+  setselectaddress(user.addresses[e.target.value]);
+}
+const handlePayment=(e)=>{
+console.log(e.target.value);
+setPayment(e.target.value);
+}
+const handleOrder=(e)=>{
+  const order={items,totalAmount,totalitems,user,Payment,selectaddress}
+  dispatch(createOrderAsync(order));
+  console.log(e.target.value);
+  setPayment(e.target.value);
+}
   return (
+    <>{!items.length>0 && <Navigate to={'/home'} replace={true}></Navigate>}
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5'>
         <div className='lg:col-span-3'>
-        <form className='bg-white px-5 mt-12 mb-2'>
+        <form noValidate className='bg-white px-5 mt-12 mb-2' onSubmit={handleSubmit((data)=>{
+           console.log(data);
+           dispatch(updateUserAsync({...user,addresses:[...user.addresses,data]}));
+         console.log(data);
+         reset();
+          })}>
         <div className="space-y-12">
       <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-2xl py-3 font-semibold leading-7 text-pink-950">Personal Information</h2>
           <p className="mt-1 text-sm leading-6 text-pink-950">Use a permanent address where you can receive mail.</p>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-pink-950">
-                First name
+            <div className="sm:col-span-4">
+              <label htmlFor="name" className="block text-sm font-medium leading-6 text-pink-950">
+                Full Name
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
+                  {...register('name',{required:'name is required'})}
+                  id="name"
                   className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
-
-            <div className="sm:col-span-3">
-              <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-pink-950">
-                Last name
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="last-name"
-                  id="last-name"
-                  autoComplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-pink-900 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
             <div className="sm:col-span-4">
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-pink-950">
                 Email address
@@ -83,42 +75,36 @@ const handleRemove=(e,id)=>{
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
                   type="email"
-                  autoComplete="email"
+                  {...register('email',{required:'email is required'})}
                   className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
-            <div className="sm:col-span-3">
-              <label htmlFor="country" className="block text-sm font-medium leading-6 text-pink-950">
-                Country
+            <div className="sm:col-span-4">
+              <label htmlFor="Phone" className="block text-sm font-medium leading-6 text-pink-950">
+                Phone
               </label>
               <div className="mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5  text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:max-w-xs sm:text-sm sm:leading-6"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
+              <input
+                  id="Phone"
+                  type="tel"
+                  {...register('Phone',{required:'Phone No is required'})}
+                  className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
 
             <div className="col-span-full">
-              <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-pink-950">
+              <label htmlFor="street" className="block text-sm font-medium leading-6 text-pink-950">
                 Street address
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="street-address"
-                  id="street-address"
-                  autoComplete="street-address"
+                  {...register('street',{required:'street address is required'})}
+                  id="street"
                   className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -130,40 +116,37 @@ const handleRemove=(e,id)=>{
               </label>
               <div className="mt-2">
                 <input
-                  type="text"
-                  name="city"
+                  type="text" 
+                  {...register('city',{required:'city is required'})}
                   id="city"
-                  autoComplete="address-level2"
                   className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="region" className="block text-sm font-medium leading-6 text-pink-950">
+              <label htmlFor="state" className="block text-sm font-medium leading-6 text-pink-950">
                 State / Province
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="region"
-                  id="region"
-                  autoComplete="address-level1"
+                  {...register('state',{required:'state is required'})}
+                  id="state"
                   className="block w-full rounded-md  py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-300 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="postal-code" className="block text-sm font-medium leading-6 text-pink-950">
+              <label htmlFor="pinCode" className="block text-sm font-medium leading-6 text-pink-950">
                 ZIP / Postal code
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  name="postal-code"
-                  id="postal-code"
-                  autoComplete="postal-code"
+                  {...register('pinCode',{required:'pinCode is required'})}
+                  id="pinCode"
                   className="block w-full rounded-md border-0 py-1.5 text-pink-950 shadow-sm ring-1 ring-inset ring-rose-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-200 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -187,10 +170,12 @@ const handleRemove=(e,id)=>{
            Choose from existing Address
           </p>
           <ul role="list">
-      {addresses.map((address) => (
-        <li key={address.email} className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-rose-100">
+      {user.addresses.map((address,index) => (
+        <li key={index} className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-rose-100">
           <div className="flex min-w-0 gap-x-4">
           <input
+          onChange={handleAddress}
+          value={index}
                     name="address"
                     type="radio"
                     className="h-4 w-4 border-orange-100 text-pink-950 focus:ring-pink-950"
@@ -199,11 +184,11 @@ const handleRemove=(e,id)=>{
             <div className="min-w-0 flex-auto">
               <p className="text-sm font-semibold leading-6 text-pink-950">{address.name}</p>
               <p className="mt-1 truncate text-xs leading-5 text-gray-500">{address.street}</p>
-              <p className="mt-1 truncate text-xs leading-5 text-gray-500">{address.pincode}</p>
+              <p className="mt-1 truncate text-xs leading-5 text-gray-500">{address.pinCode}</p>
             </div>
           </div>
           <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-            <p className="text-sm leading-6 text-gray-500">Phone: {address.phone}</p>
+            <p className="text-sm leading-6 text-gray-500">Phone: {address.Phone}</p>
             <p className="text-sm leading-6 text-gray-500">{address.city}</p>
           </div>
         </li>
@@ -217,8 +202,11 @@ const handleRemove=(e,id)=>{
                 <div className="flex items-center gap-x-3">
                   <input
                     id="cash"
+                    onChange={handlePayment}
+                    value="cash"
                     name="payments"
                     type="radio"
+                    checked={Payment==='cash'}
                     className="h-4 w-4 border-orange-100 text-pink-950 focus:ring-pink-950"
                   />
                   <label htmlFor="cash" className="block text-sm font-medium leading-6 text-pink-950">
@@ -228,7 +216,10 @@ const handleRemove=(e,id)=>{
                 <div className="flex items-center gap-x-3">
                   <input
                     id="card"
-                    name="payments"
+                    onChange={handlePayment}
+                    value={Payment}
+                    name="card"
+                    checked={Payment==='card'}
                     type="radio"
                     className="h-4 w-4 border-orange-100 text-pink-950 focus:ring-pink-950"
                   />
@@ -313,12 +304,12 @@ const handleRemove=(e,id)=>{
 </div>
 <p className="mt-0.5 text-sm text-pink-950">Shipping and taxes calculated at checkout.</p>
 <div className="mt-6">
-  <Link
-   to={'/checkout'}
+  <div
+  onClick={handleOrder}
     className="flex items-center justify-center rounded-md border border-transparent bg-pink-950 px-6 py-3 text-base font-medium text-orange-100 shadow-sm hover:bg-pink-950"
   >
-    Order and Pay
-  </Link>
+    Order Now
+  </div>
 </div>
 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
   <p>
@@ -329,7 +320,7 @@ const handleRemove=(e,id)=>{
       className="font-medium text-pink-950 hover:text-pink-950"
       onClick={() => setOpen(false)}
     >
-      Continue Shopping
+       Continue Shopping
       <span aria-hidden="true"> &rarr;</span>
     </button>
     </Link>
@@ -340,5 +331,6 @@ const handleRemove=(e,id)=>{
     </div>
     </div>
     </div>
+    </>
   );
 }
