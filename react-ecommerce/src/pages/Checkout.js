@@ -7,7 +7,7 @@ import { deleteItemFromCartAsync, selectItems, updateItemsAsync } from '../featu
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
-import { createOrderAsync } from '../features/Orders/orderSlice';
+import { createOrderAsync, selectcurrentOrder } from '../features/Orders/orderSlice';
 export default function Checkout (){
   const dispatch = useDispatch();
     const [open, setOpen] = useState(true);
@@ -18,6 +18,7 @@ const totalAmount=items.reduce((amount,item)=>item.price*item.quantity+amount,0)
 const totalitems=items.reduce((total,item)=>item.quantity+total,0);
 const { register,reset, handleSubmit, watch, formState: { errors } } = useForm();
 const user=useSelector(selectLoggedInUser);
+const currentorder=useSelector(selectcurrentOrder);
 const handleQuantity=(e,item)=>{
 dispatch(updateItemsAsync({...item,quantity:+ e.target.value}));
 };
@@ -33,13 +34,23 @@ console.log(e.target.value);
 setPayment(e.target.value);
 }
 const handleOrder=(e)=>{
-  const order={items,totalAmount,totalitems,user,Payment,selectaddress}
+  if(selectaddress && Payment){
+    const order={items,totalAmount,totalitems,user,Payment,selectaddress,status:'pending'}
   dispatch(createOrderAsync(order));
   console.log(e.target.value);
   setPayment(e.target.value);
+  }
+  else{
+    alert('Enter address and Payment Method')
+  }
+ 
+  //TODO: redirect to order-success page
+  //TODO: clear cart after order
+  //TODO: on server change the stock number of items
 }
   return (
     <>{!items.length>0 && <Navigate to={'/home'} replace={true}></Navigate>}
+    {currentorder && <Navigate to={`/ordersuccess/${currentorder.id}`}></Navigate>}
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5'>
         <div className='lg:col-span-3'>
@@ -217,7 +228,7 @@ const handleOrder=(e)=>{
                   <input
                     id="card"
                     onChange={handlePayment}
-                    value={Payment}
+                    value="card"
                     name="card"
                     checked={Payment==='card'}
                     type="radio"
@@ -306,7 +317,7 @@ const handleOrder=(e)=>{
 <div className="mt-6">
   <div
   onClick={handleOrder}
-    className="flex items-center justify-center rounded-md border border-transparent bg-pink-950 px-6 py-3 text-base font-medium text-orange-100 shadow-sm hover:bg-pink-950"
+    className="flex items-center cursor-pointer justify-center rounded-md border border-transparent bg-pink-950 px-6 py-3 text-base font-medium text-orange-100 shadow-sm hover:bg-pink-950"
   >
     Order Now
   </div>
