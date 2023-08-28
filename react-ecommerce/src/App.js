@@ -19,6 +19,8 @@ import { fetchallItemsAsync } from './features/cart/cartSlice';
 import { selectLoggedInUser } from './features/auth/authSlice';
 import PageNotFound from './pages/404';
 import Ordersuccess from './pages/Ordersuccess';
+import Userorder from './features/user/components/userOrder';
+import UserOrdersPage from './pages/userOrdersPage';
 const router=createBrowserRouter([{
   path:'/',
   element:<LoginPage/>
@@ -47,6 +49,10 @@ element:<Protected><CartPage/></Protected>
 },{
   path:'/ordersuccess/:id',
   element:<Ordersuccess/>
+},
+{
+  path:'/orders',
+  element:<UserOrdersPage/>
 }])
 function App() {
   const dispatch=useDispatch();
