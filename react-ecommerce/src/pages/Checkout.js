@@ -6,8 +6,9 @@ import { Link,useNavigate,Navigate } from 'react-router-dom';
 import { deleteItemFromCartAsync, selectItems, updateItemsAsync } from '../features/cart/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
+import {  selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
 import { createOrderAsync, selectcurrentOrder } from '../features/Orders/orderSlice';
+import { selectuserinfo } from '../features/user/userSlice';
 export default function Checkout (){
   const dispatch = useDispatch();
     const [open, setOpen] = useState(true);
@@ -17,7 +18,7 @@ export default function Checkout (){
 const totalAmount=items.reduce((amount,item)=>item.price*item.quantity+amount,0);
 const totalitems=items.reduce((total,item)=>item.quantity+total,0);
 const { register,reset, handleSubmit, watch, formState: { errors } } = useForm();
-const user=useSelector(selectLoggedInUser);
+const user=useSelector(selectuserinfo);
 const currentorder=useSelector(selectcurrentOrder);
 const handleQuantity=(e,item)=>{
 dispatch(updateItemsAsync({...item,quantity:+ e.target.value}));

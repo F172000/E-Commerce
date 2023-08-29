@@ -2340,29 +2340,28 @@
       "password": "Fazila@123",
       "addresses": [
         {
-          "name": "Fazila Bano",
-          "email": "fazilabano17@gmail.com",
+          "name": "Fazila ",
+          "email": "malika12@gmail.com",
           "Phone": "03159379922",
-          "street-address": "Bhara Kahu street#152 House#60",
+          "street": "street#50, house#12, Bharakahu Islamabad",
           "city": "Islamabad",
           "state": "Pakistan",
           "pinCode": "44000"
         },
         {
           "name": "Fazila Bano",
-          "email": "malika@gmail.com",
-          "Phone": "03159379922",
-          "Address": "",
-          "city": "Islamabad",
-          "state": "Pakistan",
-          "pinCode": "44000",
-          "street": "street#50, house#13, Bharakahu Islamabad"
-        },
-        {
-          "name": "Fazila Bano",
           "email": "fazilabano17@gmail.com",
           "Phone": "03159379922",
           "street": "street#50, house#13, Bharakahu Islamabad",
+          "city": "Islamabad",
+          "state": "Pakistan",
+          "pinCode": "44000"
+        },
+        {
+          "name": "Saima Bano",
+          "email": "saima17@gmail.com",
+          "Phone": "2987428397407",
+          "street": "house#152,Street#5 Mohalla Raja Tikka Town Bhara Kahu Islamabad",
           "city": "Islamabad",
           "state": "Pakistan",
           "pinCode": "44000"
@@ -2727,6 +2726,80 @@
       },
       "status": "pending",
       "id": 4
+    },
+    {
+      "items": [
+        {
+          "title": "HP Pavilion 15-DK1056WM",
+          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+          "price": 1099,
+          "discountPercentage": 6.18,
+          "rating": 4.43,
+          "stock": 89,
+          "brand": "HP Pavilion",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+          "images": [
+            "https://i.dummyjson.com/data/products/10/1.jpg",
+            "https://i.dummyjson.com/data/products/10/2.jpg",
+            "https://i.dummyjson.com/data/products/10/3.jpg",
+            "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 3
+        }
+      ],
+      "totalAmount": 1099,
+      "totalitems": 1,
+      "user": {
+        "email": "fazilabano17@gmail.com",
+        "password": "Fazila@123",
+        "addresses": [
+          {
+            "name": "Fazila Bano",
+            "email": "fazilabano17@gmail.com",
+            "Phone": "03159379922",
+            "street-address": "Bhara Kahu street#152 House#60",
+            "city": "Islamabad",
+            "state": "Pakistan",
+            "pinCode": "44000"
+          },
+          {
+            "name": "Fazila Bano",
+            "email": "malika@gmail.com",
+            "Phone": "03159379922",
+            "Address": "",
+            "city": "Islamabad",
+            "state": "Pakistan",
+            "pinCode": "44000",
+            "street": "street#50, house#13, Bharakahu Islamabad"
+          },
+          {
+            "name": "Fazila Bano",
+            "email": "fazilabano17@gmail.com",
+            "Phone": "03159379922",
+            "street": "street#50, house#13, Bharakahu Islamabad",
+            "city": "Islamabad",
+            "state": "Pakistan",
+            "pinCode": "44000"
+          }
+        ],
+        "id": 1
+      },
+      "Payment": "card",
+      "selectaddress": {
+        "name": "Fazila Bano",
+        "email": "malika@gmail.com",
+        "Phone": "03159379922",
+        "Address": "",
+        "city": "Islamabad",
+        "state": "Pakistan",
+        "pinCode": "44000",
+        "street": "street#50, house#13, Bharakahu Islamabad"
+      },
+      "status": "pending",
+      "id": 5
     }
   ]
 }
