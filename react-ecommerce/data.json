@@ -2338,6 +2338,7 @@
     {
       "email": "fazilabano17@gmail.com",
       "password": "Fazila@123",
+      "role": "user",
       "addresses": [
         {
           "name": "Fazila ",
@@ -2372,6 +2373,7 @@
     {
       "email": "saima17@gmail.com",
       "password": "Saima@123",
+      "role": "user",
       "addresses": [
         {
           "name": "Saima Bano",
@@ -2388,18 +2390,21 @@
     {
       "email": "zakir@gmail.com",
       "password": "Zakir@123",
+      "role": "user",
       "addresses": [],
       "id": 6
     },
     {
       "email": "uzma@gmail.com",
       "password": "Uzma@123",
+      "role": "user",
       "addresses": [],
       "id": 7
     },
     {
       "email": "uzma@gmail.com",
       "password": "Uzma@123",
+      "role": "user",
       "addresses": [],
       "id": 8
     },
@@ -2412,20 +2417,30 @@
     {
       "email": "Yasir@gmail.com",
       "password": "Yasir@123",
+      "role": "user",
       "addresses": [],
       "id": 10
     },
     {
       "email": "malika@gmail.com",
       "password": "Malika@123",
+      "role": "user",
       "addresses": [],
       "id": 11
     },
     {
       "email": "rahim@gmail.com",
       "password": "Rahim@123",
+      "role": "user",
       "addresses": [],
       "id": 12
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "Admin@123",
+      "role":"admin",
+      "addresses": [],
+      "id": 13
     }
   ],
   "cart": [

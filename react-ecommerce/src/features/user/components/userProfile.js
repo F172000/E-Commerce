@@ -44,6 +44,7 @@ setValue('pinCode',address.pinCode);
 <div className="border-t border-rose-200 px-4 py-6 sm:px-6">
 <h1 className="text-4xl my-5 font-bold tracking-tight text-pink-950">Name: {user.name? user.name:'New User'}</h1>
 <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">email address: {user.email}</h3>
+{user.role==='admin' && (<h3 className="text-xl my-5 font-bold tracking-tight text-red-900">role: {user.role}</h3>)}
 </div>
 
 

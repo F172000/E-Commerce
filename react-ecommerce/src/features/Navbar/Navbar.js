@@ -2,20 +2,22 @@ import React from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate,Link, NavLink } from 'react-router-dom';
 import logo from '../images/logo.png';
 import { useSelector } from 'react-redux';
 import { selectItems } from '../cart/cartSlice';
+import { selectLoggedInUser } from '../auth/authSlice';
 
 const user = {
   name: 'Tom Cook',
-  email: 'tom@example.com',
+  email: 'admin@example.com',
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'Kharidari', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
+  { name: 'Kharidari', Link: '#', user: false },
+  { name: 'Team', Link: '#', user: false },
+  { name: 'Admin', Link: '/admin',admin:true },
 ]
 const userNavigation = [
   { name: 'Your Profile', Link: '/profile' },
@@ -28,6 +30,7 @@ function classNames(...classes) {
 }
 export default function Navbar({children}){
   const items=useSelector(selectItems);
+  const user=useSelector(selectLoggedInUser);
     const navigate=useNavigate();
   return (
     <div>
@@ -50,10 +53,10 @@ export default function Navbar({children}){
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item) => (
-                          <a
+                        {navigation.map((item) => 
+                         item[user.role]? (<Link
                             key={item.name}
-                            href={item.href}
+                            to={item.Link}
                             className={classNames(
                               item.current
                                 ? 'bg-pink-950 text-orange-100'
@@ -63,8 +66,8 @@ export default function Navbar({children}){
                             aria-current={item.current ? 'page' : undefined}
                           >
                             {item.name}
-                          </a>
-                        ))}
+                          </Link>):null
+                          )} 
                       </div>
                     </div>
                   </div>
