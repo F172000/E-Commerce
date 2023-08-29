@@ -26,7 +26,7 @@ const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form noValidate className="space-y-6" onSubmit={handleSubmit((data)=>{
-           
+           //TODO: implementation on backend with email
          console.log(data)
           })}>
             <div>
