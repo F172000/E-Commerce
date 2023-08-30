@@ -28,6 +28,8 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
 import AdminProductDetailPage from './pages/AdminProductDetailPage';
 import AdminProductlistPage from './pages/AdminProductlistPage';
+import ProductForm from './features/admin/components/ProductForm';
+import AdminProductFormPage from './pages/AdminProductFormPage';
 const router=createBrowserRouter([{
   path:'/',
   element:<LoginPage/>
@@ -66,6 +68,14 @@ element:<Protected><CartPage/></Protected>
 {
   path:'/admin/productdetail/:id',
   element:<ProtectedAdmin><AdminProductDetailPage/></ProtectedAdmin>
+},
+{
+  path:'/admin/productform',
+  element:<ProtectedAdmin><AdminProductFormPage/></ProtectedAdmin>
+},
+{
+  path:'/admin/productform/edit/:id',
+  element:<ProtectedAdmin><AdminProductFormPage/></ProtectedAdmin>
 },
 {
   path:'/orders',

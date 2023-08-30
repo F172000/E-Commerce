@@ -206,7 +206,12 @@ dispatch(fetchAllProductsAsync());
                   {/* Filters */}
                  <DesktopFilter  handlefilters={handlefilters} filters={filters}/>
                   {/* Product grid */}
+                 
                   <div className="lg:col-span-3">
+                  <div> 
+                  <Link to={'/admin/productform'} className="rounded-md bg-green-600  mx-10 my-5 px-3 py-2 text-sm font-semibold text-orange-100 shadow-sm hover:bg-pink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-950">
+                                    Add New Product</Link>
+                                  </div>
                     {" "}
                    <ProductGrid products={products}/>
                   </div>
@@ -493,6 +498,7 @@ function ProductGrid({products}) {
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                         {products.length > 0 ? (
   products.map((product) => (
+    <div>
                             <Link to={`/productdetail/${product.id}`} key={product.id}>
                               <div  className="group relative p-2 border-solid border-2 border-rose-100 bg-orange-100">
                                 <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-pink-950 lg:aspect-none group-hover:opacity-75 lg:h-60">
@@ -527,8 +533,14 @@ function ProductGrid({products}) {
                                   </p>
                                   </div>
                                 </div>
+                              
                               </div> 
                             </Link>
+                            <div className="mt-5">
+                                    <Link to={`/admin/productform/edit/${product.id}`} className="rounded-md bg-pink-950  my-5 px-3 py-2 text-sm font-semibold text-orange-100 shadow-sm hover:bg-pink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-950">
+                                      Edit Product</Link>
+                                  </div>
+                            </div>
                           ))): (
                             <p className="font-medium text-pink-950">Data is not loaded</p>
                             // Loading or no products available message
