@@ -10,33 +10,36 @@ export default function ProductForm() {
     const categories=useSelector(selectAllCategories);
     const dispatch=useDispatch();
     const params=useParams();
-    const selectProduct=useSelector(selectProductById);
+    console.log('params',params);
+    const selectedProduct=useSelector(selectProductById);
+    console.log("selectedProduct",selectedProduct);
     useEffect(()=>{
-        if(params.id){
+        if(params.id && params){
             dispatch(fetchProductByIdAsync(params.id));
         }
         else{
-            dispatch(clearSelectedProduct);
+            dispatch(clearSelectedProduct());
         }
     },[params.id,dispatch])
     useEffect(()=>{
-        if(selectProduct && params.id){
-            setValue('title',selectProduct.title);
-            setValue('description',selectProduct.description);
-            setValue('brand',selectProduct.brand);
-            setValue('category',selectProduct.category);
-            setValue('price',selectProduct.price);
-            setValue('discountPercentage',selectProduct.discountPercentage);
-            setValue('stock',selectProduct.stock);
-            setValue('rating',selectProduct.rating);
-            setValue('thumbnail',selectProduct.thumbnail);
-            setValue('image1',selectProduct.images[0]);
-            setValue('image2',selectProduct.images[1]);
-            setValue('image3',selectProduct.images[2]);
+        if(selectedProduct && params.id){
+            setValue('title',selectedProduct.title);
+            setValue('description',selectedProduct.description);
+            setValue('brand',selectedProduct.brand);
+            setValue('category',selectedProduct.category);
+            setValue('price',selectedProduct.price);
+            setValue('discountPercentage',selectedProduct.discountPercentage);
+            setValue('stock',selectedProduct.stock);
+            setValue('rating',selectedProduct.rating);
+            setValue('thumbnail',selectedProduct.thumbnail);
+            setValue('image1',selectedProduct.images[0]);
+            setValue('image2',selectedProduct.images[1]);
+            setValue('image3',selectedProduct.images[2]);
         }
-    },[selectProduct,setValue,params.id])
+    },[selectedProduct,setValue,params.id])
     const handleDelete=()=>{
-        const product={...selectProduct};
+      console.log('we are inside handle delete');
+        const product={...selectedProduct};
         product.deleted=true;
         dispatch(updateProductAsync(product));
     }
@@ -56,11 +59,12 @@ export default function ProductForm() {
         console.log(product);
         if(params.id){
             product.id=params.id;
-            product.rating=selectProduct.rating||0;
+            product.rating=selectedProduct.rating||0;
            dispatch(updateProductAsync(product));
         }else{
             dispatch(createProductAsync(product));
             reset();
+            
         }
        })}>
       <div className="space-y-12 bg-white py-12">
@@ -334,9 +338,10 @@ export default function ProductForm() {
         <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancel
         </button>
-        {selectProduct && <button
-          onClick={handleDelete}
-          className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+       {selectedProduct && <button
+        onClick={handleDelete}
+          type="submit"
+          className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Delete
         </button>}

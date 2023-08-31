@@ -89,6 +89,7 @@ dispatch(fetchAllProductsAsync());
   useEffect(()=>{
     const pagination={_page:page,_limit:ITEMS_PER_PAGE};
     dispatch(fetchProductsByFiltersAsync({filter,sort,pagination}));
+    //TODO: server will filter all deleted products
   },[dispatch,filter,sort,page]);
   const products = useSelector(selectAllProducts);
   const totalITems=useSelector(selecttotalItems);
@@ -527,6 +528,9 @@ function ProductGrid({products}) {
                                   </p>
                                   </div>
                                 </div>
+                                {product.deleted && <div>
+                              <p className="text-sm text-red-400">product deleted</p>
+                              </div>}
                               </div> 
                             </Link>
                           ))): (

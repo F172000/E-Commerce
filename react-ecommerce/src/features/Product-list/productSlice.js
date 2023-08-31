@@ -39,6 +39,7 @@ export const createProductAsync = createAsyncThunk(
 export const updateProductAsync = createAsyncThunk(
   'product/updateProduct',
   async (update) => {
+    console.log("update",update);
     const response = await updateProduct(update);
     return response.data;
 
@@ -76,9 +77,9 @@ export const productSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-clearSelectedProduct: (state) => {
-      state.selectedProduct=null;
-    },
+    clearSelectedProduct:(state)=>{
+      state.selectedProduct = null;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -117,6 +118,7 @@ clearSelectedProduct: (state) => {
       .addCase(fetchProductByIdAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.selectedProduct = action.payload;
+        console.log(action.payload);
       })
       .addCase(createProductAsync.pending, (state) => {
         state.status = 'loading';
@@ -130,8 +132,10 @@ clearSelectedProduct: (state) => {
       })
       .addCase(updateProductAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        const index=state.products.findIndex(product=>product.id===action.payload.id);
-        state.products[index]=action.payload;
+        const index = state.products.findIndex(
+          (product) => product.id === action.payload.id
+        );
+        state.products[index] = action.payload;
       });
   },
 });

@@ -18,6 +18,7 @@ const navigation = [
   { name: 'Kharidari', Link: '#', user: false },
   { name: 'Team', Link: '#', user: false },
   { name: 'Admin', Link: '/admin',admin:true },
+  { name: 'Orders', Link: '/admin/orders',admin:true },
 ]
 const userNavigation = [
   { name: 'Your Profile', Link: '/profile' },
