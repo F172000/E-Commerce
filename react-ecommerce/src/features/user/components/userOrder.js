@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchLoggedInUserorderAsync, selectuserinfo, selectuserorders } from '../userSlice';
 import { selectLoggedInUser } from '../../auth/authSlice';
+import { discountedPrice } from '../../../app/constants';
 export default function Userorder(){
     const dispatch=useDispatch();
     const user=useSelector(selectuserinfo);
-    console.log(user);
     const orders=useSelector(selectuserorders);
+    console.log('order',orders);
     useEffect(()=>{
         if(user && user.id){
             dispatch(fetchLoggedInUserorderAsync(user.id))
@@ -38,7 +39,7 @@ export default function Userorder(){
                 <h3>
                   <a href={order.href}>{order.title}</a>
                 </h3>
-                <p className="ml-4">${order.price}</p>
+                <p className="ml-4">${discountedPrice(order)}</p>
               </div>
               <p className="mt-1 text-sm text-gray-500">{order.brand}</p>
             </div>

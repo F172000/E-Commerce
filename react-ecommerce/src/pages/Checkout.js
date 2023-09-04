@@ -9,13 +9,14 @@ import { useForm } from "react-hook-form";
 import {  selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
 import { createOrderAsync, selectcurrentOrder } from '../features/Orders/orderSlice';
 import { selectuserinfo } from '../features/user/userSlice';
+import { discountedPrice } from '../app/constants';
 export default function Checkout (){
   const dispatch = useDispatch();
     const [open, setOpen] = useState(true);
     const [selectaddress,setselectaddress]=useState(null);
     const [Payment,setPayment]=useState(null);
     const items=useSelector(selectItems);
-const totalAmount=items.reduce((amount,item)=>item.price*item.quantity+amount,0);
+const totalAmount=items.reduce((amount,item)=>discountedPrice(item)*item.quantity+amount,0);
 const totalitems=items.reduce((total,item)=>item.quantity+total,0);
 const { register,reset, handleSubmit, watch, formState: { errors } } = useForm();
 const user=useSelector(selectuserinfo);
@@ -269,7 +270,7 @@ const handleOrder=(e)=>{
                 <h3>
                   <a href={item.href}>{item.title}</a>
                 </h3>
-                <p className="ml-4">${item.price}</p>
+                <p className="ml-4">${discountedPrice(item)}</p>
               </div>
               <p className="mt-1 text-sm text-gray-500">{item.brand}</p>
             </div>
